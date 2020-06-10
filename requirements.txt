@@ -2,7 +2,6 @@ flask
 flask_wtf
 wtforms
 pandas
-urllib
 matplotlib
 sklearn
 mlxtend
