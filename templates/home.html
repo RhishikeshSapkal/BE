@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Credit Card Fraud Detection</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript"
+    src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript">
+
+
+    </script>
+</head>
+<body>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+            {% with messages = get_flashed_messages(with_categories=true)%}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{category}}">
+                            {{message}}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+          {% block content %}
+
+
+
+            {% endblock %}
+        </div>
+      </div>
+    </main>
+
+    <div class="row no-gutters">
+        <div class="col-md-6 no-gutters">
+            <div class="leftside d-flex justify-content-center align-items-center">
+                <ul style="list-style-type:none;">
+                <li> <form action="{{url_for('predict')}}" method="post" enctype= multipart/form-data>
+                    <input type="file" name="file">
+                    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+                    <p>
+                    {{ message }}
+                    </p>
+                    </form> </li>
+                <li>
+                    <div>
+                <p>{{accuracy}}</p>
+                    </div>
+                 </li>
+                 <li><div> {{confusion}}
+                    </div></li>
+                  {% if accuracy %}
+                    <li><div> True negative = {{tn}}
+                    </div></li>
+                    <li><div> False positive = {{fp}}
+                    </div></li>
+                    <li><div> False negative = {{fn}}
+                    </div></li>
+                    <li><div> True positive = {{tp}}
+                    </div></li>
+                    <li>
+                        <br>
+                    </li>
+                    <li><div> Precision = {{precision}}
+                    </div></li>
+                    <li><div> Recall = {{recall}}
+                    </div></li>
+                    <li>
+                        <br>
+                    </li>
+                    <li><div> F1_Score = {{f1_score}}
+                    </div></li>
+                    {% endif %}
+                 </ul>
+            </div>
+        </div>
+        <div class="col-md-6 no-gutters">
+            <div class="rightside d-flex justify-content-center align-items-center">
+                 {% if accuracy %}
+                 <div id="imgsc1" >
+                 <img id="img1" src="{{url_for('static', filename='confusion.png')}}" align="middle" alt="Confusion matrix"/>
+                 <br>
+                 </div>
+                 {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
