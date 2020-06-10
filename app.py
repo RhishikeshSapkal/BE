@@ -25,7 +25,7 @@ def login():
     if form.validate_on_submit():
         if form.email.data == 'admin@mescoe.org' and form.password.data == 'pass':
             flash('You have been logged in!', 'Success')
-            return redirect("home")
+            return redirect('home')
         else:
             flash('Login Unsuccessful. Please check username and password','danger')
     return render_template('LoginForm.html', form=form)
