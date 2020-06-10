@@ -1,9 +1,8 @@
 flask
-pickle
+flask_wtf
+wtforms
 pandas
-os
 urllib
-mmatplotlib
+matplotlib
 sklearn
 mlxtend
-wtforms
