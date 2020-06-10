@@ -14,11 +14,10 @@ from mlxtend.plotting import plot_confusion_matrix
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'fdebd7e881ace47e3129e5aa41cb9296'
 
-
 model = pk.load(open('model.pkl', 'rb'))
 filen = ""
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 @app.route("/Login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -61,8 +60,8 @@ def predict():
     precision = precision_score(y, prediction)
     recall = recall_score(y, prediction)
     f1score = f1_score(y, prediction)
-
-    return render_template('home.html', accuracy = 'accuracy {}'.format(accuracy*100), confusion=confusion, tp=tp, tn=tn, fn=fn, fp=fp, precision=100*precision, recall=100*recall, f1_score=100*f1score)
+    return render_template('home.html', accuracy = 'accuracy {}'.format(accuracy*100), confusion=confusion, tp=tp, tn=tn, fn=fn, fp=fp, precision=100*precision, recall=100*recall, f1_score=100*f1score, fpath = fsave)
 
 if __name__ == '__main__':
     app.run(debug=True)
+
