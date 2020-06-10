@@ -5,4 +5,4 @@ pandas
 matplotlib
 sklearn
 mlxtend
-wtforms.validators
+email_validator
