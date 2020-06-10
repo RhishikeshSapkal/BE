@@ -1,6 +1,0 @@
-    log_ROC_auc = roc_auc_score(y, model.predict(x))
-    fpr, tpr, threshold=roc_curve(y, model.predict_proba(x)[:,1])
-
-    plt.figure()
-    plt.plot(fpr,tpr, label="1"% log_ROC_auc)
-    plt.show()

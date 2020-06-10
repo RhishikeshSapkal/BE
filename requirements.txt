@@ -1,0 +1,9 @@
+flask
+pickle
+pandas
+os
+urllib
+mmatplotlib
+sklearn
+mlxtend
+wtforms
