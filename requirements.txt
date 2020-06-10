@@ -1,5 +1,6 @@
 flask==1.1.2
-flask-wtf
+flask_wtf
+email_validator
 pandas>=1.0.3
 wtf==0.1
 wtforms>=2.2.1
